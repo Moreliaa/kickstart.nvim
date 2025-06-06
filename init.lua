@@ -174,6 +174,8 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Replace selected with [P]aste without losing paste content.' })
+vim.keymap.set('n', '<leader>g', ':cd ~/Documents/git/<Enter>', { desc = 'Navigate to the [G]it folder.' })
+vim.keymap.set('n', '<leader>e', ':tab terminal<Enter>', { desc = 'Create a T[E]rminal in a new tab.' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
