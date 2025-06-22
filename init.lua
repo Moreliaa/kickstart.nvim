@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.o.relativenumber = false
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -176,6 +176,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Replace selected with [P]aste without losing paste content.' })
 vim.keymap.set('n', '<leader>g', ':cd ~/Documents/git/<Enter>', { desc = 'Navigate to the [G]it folder.' })
 vim.keymap.set('n', '<leader>e', ':tab terminal<Enter>', { desc = 'Create a T[E]rminal in a new tab.' })
+vim.keymap.set('n', '<leader>k', ':cd ~/Documents/git/kalei/src/<Enter>:source kalei.vim<Enter>', { desc = 'Restore [k]alei session.' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -553,6 +554,9 @@ require('lazy').setup({
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+
+          -- Show diagnostics
+          map('grI', vim.diagnostic.open_float, '[G]oto D[I]agnostics')
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
@@ -1045,7 +1049,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
