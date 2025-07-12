@@ -173,10 +173,14 @@ vim.o.confirm = true
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Replace selected with [P]aste without losing paste content.' })
-vim.keymap.set('n', '<leader>g', ':cd ~/Documents/git/<Enter>', { desc = 'Navigate to the [G]it folder.' })
 vim.keymap.set('n', '<leader>e', ':tab terminal<Enter>', { desc = 'Create a T[E]rminal in a new tab.' })
+
+vim.keymap.set('n', '<leader>g', ':cd ~/Documents/git/<Enter>', { desc = 'Navigate to the [G]it folder.' })
 vim.keymap.set('n', '<leader>k', ':cd ~/Documents/git/kalei/src/<Enter>:source kalei.vim<Enter>', { desc = 'Restore [k]alei session.' })
+
+-- Center cursor when jumping
+vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz')
+vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -557,6 +561,9 @@ require('lazy').setup({
 
           -- Show diagnostics
           map('grI', vim.diagnostic.open_float, '[G]oto D[I]agnostics')
+          -- Navigate between diagnostic messages
+          map('grP', vim.diagnostic.get_prev, '[G]oto [P]revious Diagnostic')
+          map('grN', vim.diagnostic.get_next, '[G]oto [N]ext Diagnostic')
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
