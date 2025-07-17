@@ -100,8 +100,6 @@ vim.g.have_nerd_font = false
 
 -- Make line numbers default
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -174,9 +172,7 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>e', ':tab terminal<Enter>', { desc = 'Create a T[E]rminal in a new tab.' })
-
-vim.keymap.set('n', '<leader>g', ':cd ~/Documents/git/<Enter>', { desc = 'Navigate to the [G]it folder.' })
-vim.keymap.set('n', '<leader>k', ':cd ~/Documents/git/kalei/src/<Enter>:source kalei.vim<Enter>', { desc = 'Restore [k]alei session.' })
+vim.keymap.set('n', '<leader>c', ':cd %:p:h<Enter>', { desc = 'Switch working dire[C]tory to that of the current file.' })
 
 -- Center cursor when jumping
 vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz')
